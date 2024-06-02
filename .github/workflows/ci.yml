@@ -1,0 +1,105 @@
+name: Brianvarskonst Coding Standard CI
+on:
+    pull_request:
+    push:
+    schedule:
+        - cron: '30 5 1 * *'
+jobs:
+    style-checks:
+        env:
+            XMLLINT_INDENT: "    "
+        runs-on: ubuntu-latest
+        steps:
+            - name: install dependencies
+              run: sudo apt update -qq && sudo apt -y install libxml2-utils
+            - name: Check out repository code
+              uses: actions/checkout@v4
+            - name: Install PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '8.1'
+                  coverage: 'none'
+            - name: Cache dependencies
+              uses: actions/cache@v3
+              with:
+                  path: '~/.cache/composer'
+                  key: "cache-composer-${{ hashFiles('composer.json') }}"
+                  restore-keys: 'cache-composer-'
+            - name: run composer
+              run: composer update --prefer-lowest --prefer-dist --no-interaction --no-progress
+            - run: xmllint --noout --schema vendor/squizlabs/php_codesniffer/phpcs.xsd Brianvarskonst/ruleset.xml
+            - run: xmllint --noout --schema vendor/squizlabs/php_codesniffer/phpcs.xsd phpcs.Brianvarskonst.xml
+            - run: xmllint --noout --schema vendor/squizlabs/php_codesniffer/phpcs.xsd phpcs.xml.dist
+            - run: diff -B Brianvarskonst/ruleset.xml <(xmllint --format Brianvarskonst/ruleset.xml)
+            - run: diff -B phpcs.brianvarskonst.xml <(xmllint --format phpcs.brianvarskonst.xml)
+            - run: diff -B phpcs.xml.dist <(xmllint --format phpcs.xml.dist)
+            - name: Stylecheck against Brianvarskonst itself
+              run: vendor/bin/phpcs
+    run-tests:
+        strategy:
+            matrix:
+                os: [ubuntu-latest]
+                php_version:
+                    - 7.4
+                    - 8.0
+                    - 8.1
+                    - 8.2
+                    - 8.3
+                dependencies_level:
+                    - --prefer-lowest
+                    - ""
+                include:
+                    - os: windows-latest
+                      php_version: 8.1
+                      dependencies_level: --prefer-lowest
+                    - os: windows-latest
+                      php_version: 8.1
+                      dependencies_level: ''
+        runs-on: ${{ matrix.os }}
+        steps:
+            - name: Set git to use LF on windows
+              if:  ${{ matrix.os == 'windows-latest' }}
+              run: |
+                  git config --global core.autocrlf false
+                  git config --global core.eol lf
+            - name: Check out repository code
+              uses: actions/checkout@v4
+            - name: Install PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  coverage: 'xdebug'
+                  php-version: ${{ matrix.php_version }}
+                  extensions: ast-1.1.1
+            - name: Cache dependencies
+              uses: actions/cache@v3
+              with:
+                  path: '~/.cache/composer'
+                  key: "cache-composer-${{ hashFiles('composer.json') }}"
+                  restore-keys: 'cache-composer-'
+            - name: Run composer
+              run: composer update ${{ matrix.dependencies_level }} --prefer-dist --no-interaction --no-progress
+            - name: Check composer.json
+              run: composer normalize --dry-run
+            - name: Run tests with coverage
+              if: ${{ matrix.os != 'windows-latest' && matrix.php_version == '8.1' && matrix.dependencies_level != '--prefer-lowest' }}
+              run: php vendor/bin/phpunit --coverage-clover=coverage.xml
+            - name: Run tests
+              run: vendor/bin/phpunit
+            - name: Run integration tests
+              run: vendor/bin/phpcs -s --standard=Brianvarskonst integrationtests/testfile.php
+            - name: Run PHPStan
+              run: vendor/bin/phpstan analyse --no-progress
+            - name: Run psalm
+              if: ${{ matrix.os != 'windows-latest' }}
+              run: vendor/bin/psalm --show-info=true
+            - name: Run phan
+              if: ${{ matrix.os != 'windows-latest' }}
+              run: vendor/bin/phan
+            # AST 1.1 binary for Windows seems to be missing on PECL
+            - name: Run phan with polyfill
+              if: ${{ matrix.os == 'windows-latest' }}
+              run: vendor/bin/phan --allow-polyfill-parser
+            - name: Upload coverage to Codecov
+              uses: codecov/codecov-action@v3
+              with:
+                  verbose: true
