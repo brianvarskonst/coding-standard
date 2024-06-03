@@ -436,7 +436,7 @@
     <rule ref="SlevomatCodingStandard.Whitespaces.DuplicateSpaces">
         <type>warning</type>
         <properties>
-            <property type="boolean" name="ignoreSpacesInComment" value="yes" />
+            <property name="ignoreSpacesInComment" value="yes" />
         </properties>
     </rule>
 
@@ -449,7 +449,7 @@
     <rule ref="SlevomatCodingStandard.Functions.ArrowFunctionDeclaration">
         <type>warning</type>
         <properties>
-            <property name="allowMultiLine" type="boolean" value="yes"/>
+            <property name="allowMultiLine" value="yes"/>
         </properties>
     </rule>
     <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInCall" />
@@ -526,7 +526,7 @@
     <rule ref="Generic.WhiteSpace.ArbitraryParenthesesSpacing">
         <type>warning</type>
         <properties>
-            <property type="boolean" name="ignoreNewlines" value="yes" />
+            <property name="ignoreNewlines" value="yes" />
         </properties>
     </rule>
     <rule ref="Generic.WhiteSpace.LanguageConstructSpacing"/>
