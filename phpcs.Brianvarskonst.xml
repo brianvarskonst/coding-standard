@@ -2,7 +2,7 @@
 <ruleset name="PHP_CodeSniffer">
     <description>The coding standard for PHP_CodeSniffer itself.</description>
 
-    <!-- Sensible default configuration settings for coding standard checking of MO4. -->
+    <!-- Sensible default configuration settings for coding standard checking of Brianvarskonst. -->
     <file>Brianvarskonst</file>
     <file>tests</file>
 
