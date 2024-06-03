@@ -2,7 +2,7 @@
 <ruleset name="PHP_CodeSniffer">
     <description>The coding standard for PHP_CodeSniffer itself, applied to Brianvarskonst.</description>
 
-    <!-- Load sensible default configuration settings for coding standard checking of MO4. -->
+    <!-- Load sensible default configuration settings for coding standard checking of Brianvarskonst. -->
     <!-- These configuration settings can only be overridden by CLI! -->
     <!-- The precedence order is: -->
     <!--   1. CLI parameters -->

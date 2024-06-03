@@ -31,7 +31,7 @@
         <!-- Exclude conflicting rules -->
         <exclude name="PSR12.Files.OpenTag.NotAlone" />
         <exclude name="PSR12.Files.FileHeader.SpacingAfterBlock" />
-        <!-- https://github.com/mayflower/mo4-coding-standard/issues/167 -->
+        <!-- https://github.com/mayflower/Brianvarskonst-coding-standard/issues/167 -->
         <exclude name="PSR12.Files.FileHeader.IncorrectGrouping" />
     </rule>
 

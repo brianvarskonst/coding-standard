@@ -7,7 +7,7 @@
         "phpcs",
         "static analysis",
         "Symfony",
-        "mo4",
+        "coding standard",
         "standards",
         "PSR"
     ],
