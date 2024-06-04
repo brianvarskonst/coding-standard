@@ -16,11 +16,11 @@
 
     <rule ref="Brianvarskonst.Namespace.Psr4">
         <properties>
-            <property
-                name="psr4"
-                type="array"
-                value="Brianvarskonst\CodingStandard\Helper=>Brianvarskonst/Helper, Brianvarskonst\Sniffs=>Brianvarskonst/Sniffs, Brianvarskonst\Tests=>Brianvarskonst/Tests"
-            />
+            <property name="psr4" type="array">
+                <element key="Brianvarskonst\CodingStandard\Helper" value="Brianvarskonst/Helper" />
+                <element key="Brianvarskonst\Sniffs" value="Brianvarskonst/Sniffs" />
+                <element key="Brianvarskonst\Tests" value="Brianvarskonst/Tests" />
+            </property>
         </properties>
     </rule>
 </ruleset>
