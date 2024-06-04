@@ -23,6 +23,8 @@ abstract class AbstractBrianvarskonstSniffUnitTest extends AbstractSniffUnitTest
      * errors as describe in @see AbstractSniffUnitTest::getErrorList
      *
      * When the array is empty, the test will pass.
+     *
+     * @var array<string, array<int, int>> $expectedErrorList
      */
     protected array $expectedErrorList = [];
 
@@ -31,6 +33,8 @@ abstract class AbstractBrianvarskonstSniffUnitTest extends AbstractSniffUnitTest
      * errors as describe in @see AbstractSniffUnitTest::getWarningList
      *
      * When the array is empty, the test will pass.
+     *
+     * @var array<string, array<int, int>> $expectedWarningList
      */
     protected array $expectedWarningList = [];
 
@@ -69,6 +73,8 @@ abstract class AbstractBrianvarskonstSniffUnitTest extends AbstractSniffUnitTest
      *
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
+     *
+     * @param array<string, array<int, int>> $list
      *
      * @return array<int, int>
      *

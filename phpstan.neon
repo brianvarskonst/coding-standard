@@ -5,6 +5,5 @@ parameters:
     paths:
        - %rootDir%/../../../Brianvarskonst
        - %rootDir%/../../../tests
-    checkMissingIterableValueType: false
 includes:
     - vendor/phpstan/phpstan-strict-rules/rules.neon

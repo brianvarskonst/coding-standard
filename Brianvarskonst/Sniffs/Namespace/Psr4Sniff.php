@@ -11,8 +11,10 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class Psr4Sniff implements Sniff
 {
+    /** @var array<class-string, string> */
     public array $psr4 = [];
 
+    /** @var array<class-string> */
     public array $exclude = [];
 
     /** @return list<int|string> */
@@ -41,7 +43,7 @@ class Psr4Sniff implements Sniff
 
         $this->normalizeExcluded();
 
-        if (!$this->psr4) {
+        if ($this->psr4 !== []) {
             $this->checkFilenameOnly($phpcsFile, $stackPtr, $className, $entityType);
 
             return;
@@ -85,6 +87,7 @@ class Psr4Sniff implements Sniff
         $fullyQualifiedName = $namespace . "\\{$className}";
 
         foreach ($this->exclude as $excluded) {
+            /** @phpstan-ignore-next-line Because of user input */
             if (\str_starts_with($fullyQualifiedName, (string) $excluded)) {
                 return;
             }
@@ -93,6 +96,7 @@ class Psr4Sniff implements Sniff
         $filePath = \str_replace('\\', '/', $file->getFilename());
 
         foreach ($this->psr4 as $baseNamespace => $foldersStr) {
+            /** @phpstan-ignore-next-line Because of user input */
             if (!\is_string($baseNamespace) || !\is_string($foldersStr)) {
                 continue;
             }
@@ -171,6 +175,7 @@ class Psr4Sniff implements Sniff
         $this->exclude = [];
 
         foreach ($excluded as $className) {
+            /** @phpstan-ignore-next-line Because of user input */
             if (!\is_string($className)) {
                 continue;
             }

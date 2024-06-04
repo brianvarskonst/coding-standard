@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Brianvarskonst\Sniffs\Formatting;
+namespace Formatting;
 
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Standards\PSR2\Sniffs\Namespaces\UseDeclarationSniff;
@@ -125,7 +125,11 @@ class AlphabeticalUseStatementsSniff extends UseDeclarationSniff
         $this->lastLine   = $line;
     }
 
-    /** Get the import class name for use statement pointed by $stackPtr. */
+    /**
+     * Get the import class name for use statement pointed by $stackPtr.
+     *
+     * @return false|array{startPtr: int, content: string}
+     */
     private function getUseImport(File $phpcsFile, int $stackPtr): false|array
     {
         $importTokens = [

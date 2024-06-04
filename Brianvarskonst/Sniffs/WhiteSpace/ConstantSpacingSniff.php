@@ -10,8 +10,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 /** Multi Line Array sniff */
 class ConstantSpacingSniff implements Sniff
 {
-    protected array $arrayTokens = [T_CONST];
-
     /**
      * Registers the tokens that this sniff wants to listen for.
      *
@@ -19,7 +17,7 @@ class ConstantSpacingSniff implements Sniff
      */
     public function register(): array
     {
-        return $this->arrayTokens;
+        return [T_CONST];
     }
 
     /**

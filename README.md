@@ -75,6 +75,9 @@ To change the sorting order for your project, add this snippet to your custom `r
 </rule>
 ```
 
+### Brianvarskonst.Formatting.UnnecessaryNamespaceUsageSniff
+* The imported class name must be used, when it was imported with a `use` statement.
+
 ### Brianvarskonst.String.VariableInDoubleQuotes
 * Interpolated variables in double-quoted strings must be surrounded by `{}`, e.g., `{$VAR}`. instead of `$VAR`.
 

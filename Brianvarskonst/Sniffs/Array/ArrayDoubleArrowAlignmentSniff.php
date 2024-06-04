@@ -17,6 +17,8 @@ class ArrayDoubleArrowAlignmentSniff implements Sniff
 {
     /**
      * Define all types of arrays.
+     *
+     * @var array<int, int|string> $arrayTokens
      */
     protected array $arrayTokens = [
         // @phan-suppress-next-line PhanUndeclaredConstant
@@ -27,7 +29,7 @@ class ArrayDoubleArrowAlignmentSniff implements Sniff
     /**
      * Registers the tokens that this sniff wants to listen for.
      *
-     * @return array<int, int>
+     * @return array<int, int|string>
      */
     public function register(): array
     {

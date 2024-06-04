@@ -8,13 +8,13 @@ use Brianvarskonst\Tests\AbstractBrianvarskonstSniffUnitTest;
 
 class IsNullUnitTest extends AbstractBrianvarskonstSniffUnitTest
 {
-    protected array $expectedErrorList = [
+    protected array $expectedWarningList = [
         'IsNullUnitTest.pass.inc' => [],
         'IsNullUnitTest.fail.inc' => [
             3  => 1,
             4  => 1,
-            5  => 2,
-            6  => 2,
+            5  => 1,
+            6  => 1,
             7  => 1,
             9  => 1,
             10 => 1,

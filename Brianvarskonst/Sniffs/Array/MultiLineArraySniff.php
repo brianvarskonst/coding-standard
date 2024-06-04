@@ -10,21 +10,18 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 /** Multi Line Array sniff */
 class MultiLineArraySniff implements Sniff
 {
-    /** Define all types of arrays */
-    protected array $arrayTokens = [
-        // @phan-suppress-next-line PhanUndeclaredConstant
-        T_OPEN_SHORT_ARRAY,
-        T_ARRAY,
-    ];
-
     /**
      * Registers the tokens that this sniff wants to listen for.
      *
-     * @return array<int, int>
+     * @return array<int, int|string>
      */
     public function register(): array
     {
-        return $this->arrayTokens;
+        return [
+            // @phan-suppress-next-line PhanUndeclaredConstant
+            T_OPEN_SHORT_ARRAY,
+            T_ARRAY,
+        ];
     }
 
     /**

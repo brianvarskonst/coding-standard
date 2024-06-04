@@ -25,7 +25,7 @@
     },
     "require": {
         "php": ">=8.0",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7 || ^1.0",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
         "escapestudios/symfony2-coding-standard": "^3.10.0",
         "phpcsstandards/phpcsutils": "^1.0",
         "slevomat/coding-standard": "^8",
@@ -50,8 +50,8 @@
         }
     },
     "scripts": {
-        "cs": "phpcs -q --parallel=$(nproc) -s",
-        "cs:analyze": "phpstan --no-progress",
+        "cs": "./vendor/bin/phpcs -q --parallel=$(nproc) -s",
+        "cs:analyze": "./vendor/bin/phpstan --no-progress",
         "cs:bf": "php -d error_reporting=24575 vendor/bin/phpcbf;exit 0",
         "test:all": "@php ./vendor/bin/phpunit"
     }

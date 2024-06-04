@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Brianvarskonst\CodingStandard\Helper;
 
 use PHPCSUtils\Tokens\Collections;
-use PHPCSUtils\Utils\Arrays;
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Util\Tokens;
 
@@ -40,21 +39,6 @@ final class Boundaries
         }
 
         return self::startEnd($file, $position);
-    }
-
-    /** @return list{int, int} */
-    public static function arrayBoundaries(File $file, int $position): array
-    {
-        $openClose = Arrays::getOpenClose($file, $position);
-
-        if (!\is_array($openClose)
-            || !\is_int($openClose['opener'] ?? null)
-            || !\is_int($openClose['closer'] ?? null)
-        ) {
-            return [-1, -1];
-        }
-
-        return [(int) $openClose['opener'], (int) $openClose['closer']];
     }
 
     /** @return list{int, int} */

@@ -61,7 +61,12 @@ class IsNullSniff implements Sniff
 
         if ($tokens[$prevToken]['code'] === T_NS_SEPARATOR) {
             $nsToken   = $prevToken;
-            $prevToken = $phpcsFile->findPrevious(T_WHITESPACE, $prevToken - 1, null, true);
+            $prevToken = $phpcsFile->findPrevious(
+                T_WHITESPACE,
+                (int) $prevToken - 1,
+                null,
+                true,
+            );
 
             if ($tokens[$prevToken]['code'] === T_STRING) {
                 return;
@@ -95,7 +100,7 @@ class IsNullSniff implements Sniff
 
         $phpcsFile->fixer->beginChangeset();
 
-        if ($nsToken !== null) {
+        if (\is_int($nsToken)) {
             $phpcsFile->fixer->replaceToken($nsToken, '');
         }
 
@@ -106,7 +111,7 @@ class IsNullSniff implements Sniff
         if ($this->keepParentheses($phpcsFile, $stackPtrOpenParenthesis, $stackPtrCloseParenthesis)) {
             if ($notNullComparison) {
                 // Remove the boolean not operator, it will be moved to the comparison operator.
-                $phpcsFile->fixer->replaceToken($prevToken, '');
+                $phpcsFile->fixer->replaceToken((int) $prevToken, '');
                 $replacement = ') !== null';
             } else {
                 $replacement = ') === null';
@@ -123,7 +128,7 @@ class IsNullSniff implements Sniff
 
             if ($notNullComparison) {
                 // Remove the boolean not operator, it will be moved to the comparison operator.
-                $phpcsFile->fixer->replaceToken($prevToken, '');
+                $phpcsFile->fixer->replaceToken((int) $prevToken, '');
                 $replacement = ' !== null';
             } else {
                 $replacement = ' === null';
@@ -180,7 +185,7 @@ class IsNullSniff implements Sniff
         // not to require whitespace, so the parentheses can be dropped.
         // PHPCS will identify statements is_null($a?$b:$c) as missing whitespace before this
         // sniff is run.
-        if (!$firstWhitespace) {
+        if ($firstWhitespace === false) {
             return false;
         }
 
@@ -192,7 +197,7 @@ class IsNullSniff implements Sniff
 
         // Something has been wrapped in parentheses ending just before the ending parenthesis of
         // the is_null statement.
-        if ($innerParenthesis
+        if ($innerParenthesis !== false
             && $tokens[$innerParenthesis]['parenthesis_closer'] === $stackPtrLastExpressionToken
         ) {
             $previousWhiteSpace = $phpcsFile->findPrevious(
@@ -204,7 +209,7 @@ class IsNullSniff implements Sniff
             // Obviously, statements such as is_null( $a ? $b : ( $c ) ) will trick this check.
             // They should retain their parenthesis, so see if there is any whitespace before
             // the opening parenthesis.
-            if (!$previousWhiteSpace) {
+            if ($previousWhiteSpace === false) {
                 return false;
             }
         }

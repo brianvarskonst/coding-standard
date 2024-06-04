@@ -27,12 +27,12 @@ $fail = array(
 );
 
 $fail = array(
-    1,
+1,
     2,
 );
 
 $fail = [
-    1,
+     1,
     2,
 ];
 
