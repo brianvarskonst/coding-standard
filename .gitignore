@@ -1,7 +1,6 @@
 # Dependencies
 /vendor/
 /composer.phar
-composer.lock
 
 # Build & Tests
 /build/
