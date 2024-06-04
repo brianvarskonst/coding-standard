@@ -13,4 +13,14 @@
     <arg name="colors"/>
     <arg name="parallel" value="75"/>
     <arg value="np"/>
+
+    <rule ref="Brianvarskonst.Namespace.Psr4">
+        <properties>
+            <property
+                name="psr4"
+                type="array"
+                value="Brianvarskonst\CodingStandard\Helper=>Brianvarskonst/Helper, Brianvarskonst\Sniffs=>Brianvarskonst/Sniffs, Brianvarskonst\Tests=>Brianvarskonst/Tests"
+            />
+        </properties>
+    </rule>
 </ruleset>
