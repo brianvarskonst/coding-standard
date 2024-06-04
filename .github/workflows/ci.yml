@@ -33,8 +33,9 @@ jobs:
             - run: diff -Bw <(./bin/normalize.sh Brianvarskonst/ruleset.xml) <(./bin/normalize.sh <(xmllint --format Brianvarskonst/ruleset.xml))
             - run: diff -Bw phpcs.Brianvarskonst.xml <(xmllint --format phpcs.Brianvarskonst.xml)
             - run: diff -Bw phpcs.xml.dist <(xmllint --format phpcs.xml.dist)
+            - run: vendor/bin/phpcs -i
             - name: Stylecheck against Brianvarskonst itself
-              run: composer cs
+              run: vendor/bin/phpcs
     run-tests:
         strategy:
             matrix:
