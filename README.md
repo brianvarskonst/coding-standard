@@ -8,10 +8,8 @@ Provides a PHP CodeSniffer ruleset for the Brianvarskonst coding standard
 [![Latest Unstable Version](http://poser.pugx.org/brianvarskonst/coding-standard/v/unstable)](https://packagist.org/packages/brianvarskonst/coding-standard)
 [![Version](http://poser.pugx.org/brianvarskonst/coding-standard/version)](https://packagist.org/packages/brianvarskonst/coding-standard)
 
-[![PHP Version Require](http://poser.pugx.org/brianvarskonst/coding-standard/require/php)](https://packagist.org/packages/brianvarskonst/coding-standard)
 ![PHPStan](https://img.shields.io/badge/style-level%208-brightgreen.svg?&label=phpstan)
 [![composer.lock](http://poser.pugx.org/brianvarskonst/coding-standard/composerlock)](https://packagist.org/packages/brianvarskonst/coding-standard)
-
 [![License](http://poser.pugx.org/brianvarskonst/coding-standard/license)](https://packagist.org/packages/brianvarskonst/coding-standard)
 
 ## Overview
@@ -291,13 +289,6 @@ A few rules have been included from the [Slevomat Coding Standard](https://githu
 
 A few rules have been included from the [Symfony Coding Standard](https://github.com/djoos/Symfony-coding-standard).
 
-#### PHPCompatibility
-
-For PHP cross-version compatibility checks, the full [PHP Compatibility Coding Standard for PHP CodeSniffer](https://github.com/PHPCompatibility/PHPCompatibility)
-standard has been included.
-
-The target PHP version (range) can be changed via a [custom `phpcs.xml` file](https://github.com/PHPCompatibility/PHPCompatibility/blob/9.3.5/README.md#using-a-custom-ruleset).
-
 #### Generic Rules
 
 Some rules are also included from PHP_CodeSniffer itself, as well as [PHPCSExtra](https://github.com/PHPCSStandards/PHPCSExtra).
@@ -367,10 +358,6 @@ $ ./vendor/bin/phpcs --config-set default_standard Brianvarskonst
 
 If `phpcs` complains that `Brianvarskonst` coding standard is not installed, please check the installed coding standards with
 `phpcs -i` and that `installed_paths` is set correctly with `phpcs --config-show`
-
-Certainly! Here is the professionalized section with markdown syntax for easy copying:
-
----
 
 ## Removing or Disabling Rules
 
