@@ -23,8 +23,8 @@ jobs:
               uses: actions/cache@v3
               with:
                   path: '~/.cache/composer'
-                  key: "cache-composer-${{ hashFiles('composer.json') }}"
-                  restore-keys: 'cache-composer-'
+                  key: "${{ runner.os }}-cache-composer-${{ hashFiles('composer.json') }}"
+                  restore-keys: "${{ runner.os }}-cache-composer-"
             - name: run composer
               run: composer update --prefer-lowest --prefer-dist --no-interaction --no-progress -W
             - run: xmllint --noout --schema vendor/squizlabs/php_codesniffer/phpcs.xsd Brianvarskonst/ruleset.xml

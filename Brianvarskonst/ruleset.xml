@@ -107,7 +107,7 @@
     </rule>
 
     <!-- Forbid whitespace between array access operator and the variable or between array access operators. -->
-<!--    <rule ref="SlevomatCodingStandard.Arrays.ArrayAccess"/>-->
+    <rule ref="SlevomatCodingStandard.Arrays.ArrayAccess"/>
     <!-- Sort attributes alphabetically -->
     <rule ref="SlevomatCodingStandard.Attributes.AttributesOrder">
         <properties>

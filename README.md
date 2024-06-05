@@ -3,17 +3,14 @@
 Provides a PHP CodeSniffer ruleset for the Brianvarskonst coding standard
 
 [![Build Status](https://github.com/brianvarskonst/coding-standard/actions/workflows/ci.yml/badge.svg)](https://github.com/brianvarskonst/coding-standard/actions)
-[![Code Coverage](https://codecov.io/gh/brianvarskonst/coding-standard/branch/master/graph/badge.svg)](https://codecov.io/gh/brianvarskonst/coding-standard/branch/master/)
-[![Scrutinizer Quality Level](https://scrutinizer-ci.com/g/brianvarskonst/coding-standard/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/brianvarskonst/coding-standard)
-[![Codeclimate Maintainability](https://api.codeclimate.com/v1/badges/16114548a0315d993868/maintainability)](https://codeclimate.com/github/brianvarskonst/coding-standard/maintainability)
 
 [![Latest Stable Version](https://poser.pugx.org/brianvarskonst/coding-standard/v/stable)](https://packagist.org/packages/brianvarskonst/coding-standard)
 [![Total Downloads](https://poser.pugx.org/brianvarskonst/coding-standard/downloads)](https://packagist.org/packages/brianvarskonst/coding-standard)
 [![Latest Unstable Version](https://poser.pugx.org/brianvarskonst/coding-standard/v/unstable)](https://packagist.org/packages/brianvarskonst/coding-standard)
 [![composer.lock](https://poser.pugx.org/brianvarskonst/coding-standard/composerlock)](https://packagist.org/packages/brianvarskonst/coding-standard)
 
-[![Minimum PHP Version](https://img.shields.io/packagist/php-v/brianvarskonst/coding-standard.svg?maxAge=3600)][https://packagist.org/packages/brianvarskonst/coding-standard]
-[![Tested on PHP 7.4 to 8.3](https://img.shields.io/badge/tested%20on-PHP%205.4%20|%205.5%20|%205.6%20|%207.0%20|%207.1%20|%207.2%20|%207.3%20|%207.4%20|%208.0%20|%208.1%20|%208.2%20|%208.3-brightgreen.svg?maxAge=2419200)][https://github.com/brianvarskonst/coding-standard/actions/workflows/ci.yml]
+[![Build status](https://github.com/brianvarskonst/coding-standard/workflows/Build/badge.svg?branch=main)](https://github.com/brianvarskonst/coding-standard/actions?query=workflow%3ABuild+branch%3Amain)
+![PHPStan](https://img.shields.io/badge/style-level%208-brightgreen.svg?&label=phpstan)
 
 [![License](https://poser.pugx.org/brianvarskonst/coding-standard/license)](https://packagist.org/packages/brianvarskonst/coding-standard)
 ![Awesome](https://img.shields.io/badge/awesome%3F-yes!-brightgreen.svg)

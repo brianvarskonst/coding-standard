@@ -3,6 +3,7 @@
     backupGlobals="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
     bootstrap="tests/bootstrap.php"
+    cacheResult="false"
 >
     <testsuites>
         <testsuite name="Brianvarskonst Ruleset Test Suite">
