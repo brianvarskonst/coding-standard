@@ -1,23 +1,24 @@
-# Brianvarskonst CodeSniffer Ruleset
+# Brianvarskonst Coding Standard
 
 Provides a PHP CodeSniffer ruleset for the Brianvarskonst coding standard
 
 [![Build Status](https://github.com/brianvarskonst/coding-standard/actions/workflows/ci.yml/badge.svg)](https://github.com/brianvarskonst/coding-standard/actions)
 
-[![Latest Stable Version](https://poser.pugx.org/brianvarskonst/coding-standard/v/stable)](https://packagist.org/packages/brianvarskonst/coding-standard)
-[![Total Downloads](https://poser.pugx.org/brianvarskonst/coding-standard/downloads)](https://packagist.org/packages/brianvarskonst/coding-standard)
-[![Latest Unstable Version](https://poser.pugx.org/brianvarskonst/coding-standard/v/unstable)](https://packagist.org/packages/brianvarskonst/coding-standard)
-[![composer.lock](https://poser.pugx.org/brianvarskonst/coding-standard/composerlock)](https://packagist.org/packages/brianvarskonst/coding-standard)
+[![Latest Stable Version](http://poser.pugx.org/brianvarskonst/coding-standard/v)](https://packagist.org/packages/brianvarskonst/coding-standard)[![Total Downloads](https://poser.pugx.org/brianvarskonst/coding-standard/downloads)](https://packagist.org/packages/brianvarskonst/coding-standard)
+[![Latest Unstable Version](http://poser.pugx.org/brianvarskonst/coding-standard/v/unstable)](https://packagist.org/packages/brianvarskonst/coding-standard)
+[![Version](http://poser.pugx.org/brianvarskonst/coding-standard/version)](https://packagist.org/packages/brianvarskonst/coding-standard)
 
-[![Build status](https://github.com/brianvarskonst/coding-standard/workflows/Build/badge.svg?branch=main)](https://github.com/brianvarskonst/coding-standard/actions?query=workflow%3ABuild+branch%3Amain)
+[![PHP Version Require](http://poser.pugx.org/brianvarskonst/coding-standard/require/php)](https://packagist.org/packages/brianvarskonst/coding-standard)
 ![PHPStan](https://img.shields.io/badge/style-level%208-brightgreen.svg?&label=phpstan)
+[![composer.lock](http://poser.pugx.org/brianvarskonst/coding-standard/composerlock)](https://packagist.org/packages/brianvarskonst/coding-standard)
 
-[![License](https://poser.pugx.org/brianvarskonst/coding-standard/license)](https://packagist.org/packages/brianvarskonst/coding-standard)
-![Awesome](https://img.shields.io/badge/awesome%3F-yes!-brightgreen.svg)
+[![License](http://poser.pugx.org/brianvarskonst/coding-standard/license)](https://packagist.org/packages/brianvarskonst/coding-standard)
 
 ## Overview
 
 The Brianvarskonst Coding Standard is an extension of the [Symfony Coding Standard](http://symfony.com/doc/current/contributing/code/standards.html) and adds specific rules for ensuring code quality and consistency.
+
+> PHP 8.0+ coding standard
 
 ## Rules
 
@@ -267,12 +268,39 @@ E.g. by excluding `Brianvarskonst\ExcludeThis` things like `Brianvarskonst\Exclu
 To make sure what's excluded is a namespace, and not a class with same name, just use `\` as last
 character.
 
+### Included rules
 
-### Additional Rules
-
-Further rules are imported from other standards, detailed in `Brianvarskonst/ruleset.xml`.
+Further rules are imported from other standards, detailed in [`ruleset.xml`](Brianvarskonst/ruleset.xml).
 
 Most of the issues can be auto-fixed with `phpcbf`.
+
+#### PSR-1, PSR-2, PSR-12
+
+For more information about included rules from PHP Standards Recommendations (PSR), refer to the
+official documentation:
+
+- [PSR-1](https://www.php-fig.org/psr/psr-1)
+- [PSR-2](https://www.php-fig.org/psr/psr-2)
+- [PSR-12](https://www.php-fig.org/psr/psr-12)
+
+#### Slevomat
+
+A few rules have been included from the [Slevomat Coding Standard](https://github.com/slevomat/coding-standard).
+
+#### Symfony
+
+A few rules have been included from the [Symfony Coding Standard](https://github.com/djoos/Symfony-coding-standard).
+
+#### PHPCompatibility
+
+For PHP cross-version compatibility checks, the full [PHP Compatibility Coding Standard for PHP CodeSniffer](https://github.com/PHPCompatibility/PHPCompatibility)
+standard has been included.
+
+The target PHP version (range) can be changed via a [custom `phpcs.xml` file](https://github.com/PHPCompatibility/PHPCompatibility/blob/9.3.5/README.md#using-a-custom-ruleset).
+
+#### Generic Rules
+
+Some rules are also included from PHP_CodeSniffer itself, as well as [PHPCSExtra](https://github.com/PHPCSStandards/PHPCSExtra).
 
 ## Requirements
 
@@ -339,6 +367,89 @@ $ ./vendor/bin/phpcs --config-set default_standard Brianvarskonst
 
 If `phpcs` complains that `Brianvarskonst` coding standard is not installed, please check the installed coding standards with
 `phpcs -i` and that `installed_paths` is set correctly with `phpcs --config-show`
+
+Certainly! Here is the professionalized section with markdown syntax for easy copying:
+
+---
+
+## Removing or Disabling Rules
+
+### Rules Tree
+
+Sometimes it is necessary to not follow certain rules. To avoid error reporting, you can:
+
+- Remove rules for an entire project via configuration.
+- Disable rules from code, only in specific places.
+
+In both cases, it is possible to remove or disable:
+
+- A complete standard
+- A standard subset
+- A single sniff
+- A single rule
+
+These elements are in a hierarchical relationship: `standards` consist of one or more `subsets`,
+which contain one or more `sniffs`, which in turn contain one or more `rules`.
+
+### Removing Rules via Configuration File
+
+Rules can be removed for the entire project by using a custom `phpcs.xml` file, like this:
+
+```xml
+<?xml version="1.0"?>
+<ruleset name="MyProjectCodingStandard">
+
+    <rule ref="Brianvarskonst">
+        <exclude name="PSR1.Classes.ClassDeclaration"/>
+    </rule>
+
+</ruleset>
+```
+
+In the example above, the `PSR1.Classes.ClassDeclaration` sniff (and all the rules it contains) has been removed.
+
+By using `PSR1` instead of `PSR1.Classes.ClassDeclaration`, you would remove the entire `PSR1` standard. Whereas using `PSR1.Classes.ClassDeclaration.MultipleClasses` would remove this one rule only, without affecting other rules in the `PSR1.Classes.ClassDeclaration` sniff.
+
+### Removing Rules via Code Comments
+
+Removing a rule/sniff/subset/standard only for a specific file or part of it can be done using special `phpcs` annotations/comments. For example, `// phpcs:disable` followed by an optional name of a standard/subset/sniff/rule. Like so:
+
+```php
+// phpcs:disable PSR1.Classes.ClassDeclaration
+```
+
+For more information about ignoring files, please refer to the official [PHP_CodeSniffer Wiki](https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file).
+
+## IDE Integration
+
+### PhpStorm
+
+After installing the coding standard package as described above, configure PhpStorm to use PHP_CodeSniffer by following these steps:
+
+1. Open PhpStorm settings and navigate to:
+> `Language & Frameworks` -> `PHP` -> `Quality Tools` -> `PHP_CodeSniffer`.
+
+2. In the `Configuration` dropdown, select `Local`.
+
+3. Click the `...` button next to the dropdown to open a dialog for specifying the path to the PHP_CodeSniffer executable.
+
+4. In the file selection dialog, navigate to `vendor/bin/` in your project directory and select `phpcs`. On Windows, select `phpcs.bat`.
+
+5. Click the `Validate` button next to the path input field. If everything is set up correctly, a success message will appear at the bottom of the window.
+
+6. Still in the PhpStorm settings, navigate to:
+> `Editor` -> `Inspections`
+
+7. In the search field, type `codesniffer` and then select:
+> `PHP` -> `Quality Tools` -> `PHP_CodeSniffer validation`
+
+8. Enable it by checking the corresponding checkbox and clicking `Apply`.
+
+9. Select `PHP_CodeSniffer validation`, then click the refresh icon next to the `Coding standard` dropdown on the right and choose `Brianvarskonst`.
+
+    - If `Brianvarskonst` is not listed, select `Custom` as the standard and use the `...` button next to the dropdown to specify the `phpcs.xml` file.
+
+Once PhpStorm is integrated with PHP_CodeSniffer, warnings and errors will automatically be highlighted in your IDE editor.
 
 ## Dependencies
 
