@@ -433,13 +433,6 @@
     <!-- forbid static:: in final class -->
     <rule ref="SlevomatCodingStandard.Classes.UselessLateStaticBinding" />
 
-    <rule ref="SlevomatCodingStandard.Whitespaces.DuplicateSpaces">
-        <type>warning</type>
-        <properties>
-            <property name="ignoreSpacesInComment" value="yes" />
-        </properties>
-    </rule>
-
     <!-- Rules for recent language features -->
     <rule ref="SlevomatCodingStandard.TypeHints.UnionTypeHintFormat" />
     <rule ref="SlevomatCodingStandard.Exceptions.RequireNonCapturingCatch" />

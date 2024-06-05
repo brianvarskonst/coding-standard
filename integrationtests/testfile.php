@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * Taken from symfony-docs: contributing/code/standards.rst
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Acme;
 
 const BAM = 1;
@@ -7,6 +20,7 @@ const BAM = 1;
 /**
  * Coding standards demonstration.
  */
+// phpcs:ignore Brianvarskonst.Namespace.Psr4.InvalidPSR4, Squiz.Classes.ClassFileName.NoMatch
 class FooBar
 {
     public const SOME_CONST = 42;
@@ -14,27 +28,25 @@ class FooBar
     protected const PROTECT = 0;
     public const LALA       = 'lala';
 
-    /**
-     * @var string
-     */
-    private $fooBar;
+    private string $fooBar;
 
-    /**
-     * @param string $dummy Some argument description
-     */
+    /** @param string $dummy Some argument description */
     public function __construct(string $dummy)
     {
         $this->fooBar = $this->transformText($dummy);
     }
 
-    /**
-     * @return string
-     *
-     * @deprecated
-     */
+    /** @deprecated */
     public function someDeprecatedMethod(): string
     {
-        @\trigger_error(\sprintf('The %s() method is deprecated since version 2.8 and will be removed in 3.0. Use Acme\Baz::someMethod() instead.', __METHOD__), E_USER_DEPRECATED);
+        @\trigger_error(
+            \sprintf(
+                'The %s() method is deprecated since version 2.8 and will be removed in 3.0. Use %s instead.',
+                __METHOD__,
+                'Acme\Baz::someMethod()',
+            ),
+            E_USER_DEPRECATED,
+        );
 
         return Baz::someMethod();
     }
@@ -49,7 +61,7 @@ class FooBar
      *
      * @throws \RuntimeException When an invalid option is provided
      */
-    private function transformText($dummy, array $options = []): ?string
+    private function transformText(bool| string $dummy, array $options = []): ?string
     {
         /** @var array<string, string> $defaultOptions */
         $defaultOptions = [
@@ -67,15 +79,15 @@ class FooBar
 
         $mergedOptions = \array_merge(
             $defaultOptions,
-            $options
+            $options,
         );
 
-        if (true === $dummy) {
+        if ($dummy === true) {
             return null;
         }
 
-        if ('string' === $dummy) {
-            if ('values' === $mergedOptions['some_default']) {
+        if ($dummy === 'string') {
+            if ($mergedOptions['some_default'] === 'values') {
                 return \substr($dummy, 0, 5);
             }
 

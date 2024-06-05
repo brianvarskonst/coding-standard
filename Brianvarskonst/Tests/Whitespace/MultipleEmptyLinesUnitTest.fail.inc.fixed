@@ -9,21 +9,21 @@
  * @return void
  */
 function wfFailedExamples() {
-	$a = 1;
+    $a = 1;
 
-	$b = 2;
+    $b = 2;
 
-	// Comment
+    // Comment
 
-	// Comment 2
+    // Comment 2
 
-	// Comment 3
+    // Comment 3
 
-	/* Comment 4 */
+    /* Comment 4 */
 
-	# Comment 5
+    # Comment 5
 
-	$c = 3;
+    $c = 3;
 }
 
 /**
@@ -31,7 +31,7 @@ function wfFailedExamples() {
  * @return void
  */
 function wfPassedExamples() {
-	$a = 1;
+    $a = 1;
 
-	$b = 2;
+    $b = 2;
 }

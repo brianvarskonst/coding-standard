@@ -14,7 +14,7 @@ use Brianvarskonst\Tests\AbstractBrianvarskonstSniffUnitTest;
  */
 class UnnecessaryNamespaceUsageUnitTest extends AbstractBrianvarskonstSniffUnitTest
 {
-    protected array $expectedErrorList = [
+    protected array $expectedWarningList = [
         'UnnecessaryNamespaceUsageUnitTest.pass.1.inc' => [],
         'UnnecessaryNamespaceUsageUnitTest.pass.2.inc' => [],
         'UnnecessaryNamespaceUsageUnitTest.pass.3.inc' => [],
