@@ -30,7 +30,7 @@ jobs:
                 restore-keys: |
                     ${{ runner.os }}-composer-
             - name: run composer
-              run: composer update --prefer-lowest --prefer-dist --no-interaction --no-progress -W
+              run: composer update --no-interaction --no-progress -W
             - run: xmllint --noout --schema vendor/squizlabs/php_codesniffer/phpcs.xsd Brianvarskonst/ruleset.xml
             - run: xmllint --noout --schema vendor/squizlabs/php_codesniffer/phpcs.xsd phpcs.Brianvarskonst.xml
             - run: xmllint --noout --schema vendor/squizlabs/php_codesniffer/phpcs.xsd phpcs.xml.dist
