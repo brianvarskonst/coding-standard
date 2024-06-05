@@ -1,7 +1,13 @@
 name: Brianvarskonst Coding Standard CI
 on:
     pull_request:
+        paths:
+            - '**/*.php'
+            - '**/*.xml'
     push:
+        paths:
+            - '**/*.php'
+            - '**/*.xml'
     schedule:
         - cron: '30 5 1 * *'
 jobs:
