@@ -21,15 +21,14 @@ jobs:
                   coverage: 'none'
             - name: Get Composer Cache Directory
               id: composer-cache
-              run: |
-                echo "::set-output name=dir::$(composer config cache-files-dir)"
+              run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_ENV
             - name: Cache dependencies
               uses: actions/cache@v3
               with:
-                  path: ${{ steps.composer-cache.outputs.dir }}
-                  key: "${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}"
-                  restore-keys: |
-                      ${{ runner.os }}-composer-
+                path: ${{ env.dir }}
+                key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                restore-keys: |
+                    ${{ runner.os }}-composer-
             - name: run composer
               run: composer update --prefer-lowest --prefer-dist --no-interaction --no-progress -W
             - run: xmllint --noout --schema vendor/squizlabs/php_codesniffer/phpcs.xsd Brianvarskonst/ruleset.xml
