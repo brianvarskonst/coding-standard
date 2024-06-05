@@ -19,12 +19,17 @@ jobs:
               with:
                   php-version: '8.1'
                   coverage: 'none'
+            - name: Get Composer Cache Directory
+              id: composer-cache
+              run: |
+                echo "::set-output name=dir::$(composer config cache-files-dir)"
             - name: Cache dependencies
               uses: actions/cache@v3
               with:
-                  path: '~/.cache/composer'
-                  key: "${{ runner.os }}-cache-composer-${{ hashFiles('composer.json') }}"
-                  restore-keys: "${{ runner.os }}-cache-composer-"
+                  path: ${{ steps.composer-cache.outputs.dir }}
+                  key: "${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}"
+                  restore-keys: |
+                      ${{ runner.os }}-composer-
             - name: run composer
               run: composer update --prefer-lowest --prefer-dist --no-interaction --no-progress -W
             - run: xmllint --noout --schema vendor/squizlabs/php_codesniffer/phpcs.xsd Brianvarskonst/ruleset.xml
