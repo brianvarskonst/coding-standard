@@ -92,10 +92,3 @@ jobs:
 #              run: vendor/bin/phpcs -s --standard=Brianvarskonst integrationtests/testfile.php
 #            - name: Run PHPStan
 #              run: vendor/bin/phpstan analyse --no-progress
-#            - name: Run phan
-#              if: ${{ matrix.os != 'windows-latest' }}
-#              run: vendor/bin/phan
-#            # AST 1.1 binary for Windows seems to be missing on PECL
-#            - name: Run phan with polyfill
-#              if: ${{ matrix.os == 'windows-latest' }}
-#              run: vendor/bin/phan --allow-polyfill-parser

@@ -1,6 +1,6 @@
 {
     "name": "brianvarskonst/coding-standard",
-    "description": "PHP coding-standard for customerce projects",
+    "description": "Coding Standard Rules for CodeSniffer for writing consistent PHP code",
     "license": "MIT",
     "type": "phpcodesniffer-standard",
     "keywords": [
@@ -33,7 +33,6 @@
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.8",
-        "phan/phan": "^5",
         "phpstan/phpstan": "^1",
         "phpstan/phpstan-strict-rules": "^1",
         "phpunit/phpunit": "^9.3"
