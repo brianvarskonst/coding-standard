@@ -35,7 +35,8 @@
         "ergebnis/composer-normalize": "^2.8",
         "phpstan/phpstan": "^1",
         "phpstan/phpstan-strict-rules": "^1",
-        "phpunit/phpunit": "^9.3"
+        "phpunit/phpunit": "^9.3",
+        "symfony/var-dumper": "^7.1"
     },
     "autoload": {
         "psr-4": {
