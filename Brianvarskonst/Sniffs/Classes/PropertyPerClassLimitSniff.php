@@ -23,7 +23,6 @@ class PropertyPerClassLimitSniff implements Sniff
     /** @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint */
     public function process(File $phpcsFile, $stackPtr): void
     {
-        // phpcs:enable Inpsyde.CodeQuality.ArgumentTypeDeclaration
         $count = Objects::countProperties($phpcsFile, $stackPtr);
 
         if ($count <= $this->maxCount) {

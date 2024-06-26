@@ -62,8 +62,6 @@ class ElementNameMinimalLengthSniff implements Sniff
     /** @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint */
     public function process(File $phpcsFile, $stackPtr): void
     {
-        // phpcs:enable Inpsyde.CodeQuality.ArgumentTypeDeclaration
-
         $elementName = Names::nameableTokenName($phpcsFile, $stackPtr);
 
         if (($elementName === '') || ($elementName === null)) {

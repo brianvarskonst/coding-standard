@@ -27,12 +27,10 @@ final class Names
     /**
      * @return string|null Null is an error, empty string is fine.
      *
-     * phpcs:disable Generic.Metrics.CyclomaticComplexity
+     * @phpcsSuppress Generic.Metrics.CyclomaticComplexity
      */
     public static function nameableTokenName(File $file, int $position): ?string
     {
-        // phpcs:enable Generic.Metrics.CyclomaticComplexity
-
         /** @var array<int, array<string, mixed>> $tokens */
         $tokens = $file->getTokens();
         $code   = $tokens[$position]['code'] ?? null;
@@ -66,12 +64,10 @@ final class Names
     /**
      * @return string
      *
-     * phpcs:disable Inpsyde.CodeQuality.FunctionLength
      * phpcs:disable Generic.Metrics.CyclomaticComplexity
      */
     public static function tokenTypeName(File $file, int $position): string
     {
-        // phpcs:enable Inpsyde.CodeQuality.FunctionLength
         // phpcs:enable Generic.Metrics.CyclomaticComplexity
 
         /** @var array<int, array<string, mixed>> $tokens */
